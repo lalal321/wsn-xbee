@@ -1,0 +1,3 @@
+[submodule "lib/libxbee3"]
+	path = lib/libxbee3
+	url = https://github.com/attie/libxbee3.git
