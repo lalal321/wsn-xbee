@@ -4,7 +4,7 @@ all:
 	g++ -o $(PROJECT)  $(PROJECT).cpp -lxbee
 
 clean-all:
-	rm *.o
+	rm main
 	
 clean:
-	rm *.o
+	rm main

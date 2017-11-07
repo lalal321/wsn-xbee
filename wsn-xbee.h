@@ -7,16 +7,14 @@
 #include <string>
 #include <sstream> 
 
-using namespace std;
-
-string data;
+std::string data;
 
 class WSNXbee{
   public:
-    WSNXbee(string port, int baudrate);
+    WSNXbee(std::string port, int baudrate);
     ~WSNXbee();
-    void send(int numberOfXbee, string data);
-    string receive(int numberOfXbee);
+    void send(int numberOfXbee, std::string data);
+    std::string receive(int numberOfXbee);
     
  private:
 	struct xbee_conAddress address;
@@ -26,7 +24,7 @@ class WSNXbee{
 };
 
 // constructor
-WSNXbee::WSNXbee(string port, int baudrate){
+WSNXbee::WSNXbee(std::string port, int baudrate){
 	xbee_setup(&this->xbee, "xbeeZB", port, baudrate);
 }
 
@@ -37,19 +35,6 @@ WSNXbee::~WSNXbee(){
 
 	/* shutdown libxbee */
 	xbee_shutdown(this->xbee);
-}
-
-void myCB(struct xbee *xbee, struct xbee_con *con, struct xbee_pkt **pkt, void **data) {
-	
-	if ((*pkt)->dataLen > 0) {
-				
-		std::stringstream ss;
-		ss << (*pkt)->data;
-		string dd;
-		ss >> data;
-				
-	}
-	
 }
 
 void WSNXbee::selectRadio(int n){
@@ -99,7 +84,7 @@ void WSNXbee::selectRadio(int n){
 		status = 1;
 	}
 	else{
-		cout << "Xbee not found!" << endl;
+		std::cout << "Xbee not found!\n";
 		return;
 	}
 	
@@ -107,16 +92,7 @@ void WSNXbee::selectRadio(int n){
 	
 		/* create a 64-bit data connection with the address */
 		xbee_conNew(xbee, &this->con, "Data", &this->address);
-
-		/*?????*/
-		//xbee_conDataSet(this->con, this->xbee, NULL);
 		
-
-		/* setup a callback to keep both the system load and response time low */
-		xbee_conCallbackSet(this->con, myCB, NULL);
-
-		/* kick off the chain reaction! */
-		xbee_conTx(this->con, NULL, "Hello");
 	}
 	else{
 		this->selectRadio(1);
@@ -124,7 +100,7 @@ void WSNXbee::selectRadio(int n){
 	
 }
 
-void WSNXbee::send(int numberOfXbee, string message){
+void WSNXbee::send(int numberOfXbee, std::string message){
 	
 	this->selectRadio(numberOfXbee);
 	
@@ -136,16 +112,25 @@ void WSNXbee::send(int numberOfXbee, string message){
 	xbee_conTx(con, NULL, writable);
 }
 
-
-string WSNXbee::receive(int numberOfXbee){
+std::string WSNXbee::receive(int numberOfXbee){
 	
 		this->selectRadio(numberOfXbee);
 
-		void *p;
-        xbee_conCallbackGet(this->con, (xbee_t_conCallback*)&p);
+		struct xbee_pkt *pkt;
 
-        usleep(100000);
+		xbee_conTx(con, NULL, "HelloTest");
+
+		usleep(100000);
+
+		if (xbee_conRx(con, &pkt, NULL) != XBEE_ENONE) {
+
+            return NULL;
+
+        }
         
-        return data;        		
-
+        //convert char array to string
+        std::stringstream ss;
+        ss << pkt->data;
+        
+        return ss.str();
 }
