@@ -104,12 +104,8 @@ void WSNXbee::send(int numberOfXbee, std::string message){
 
 	this->selectRadio(numberOfXbee);
 
-	//convert string to char
-	char * writable = new char[message.size() + 1];
-	copy(message.begin(), message.end(), writable);
-	writable[message.size()] = '\0';
 	//send data
-	xbee_conTx(con, NULL, writable);
+	xbee_conTx(con, NULL, message.c_str());
 }
 
 std::string WSNXbee::receive(int numberOfXbee){
@@ -118,7 +114,7 @@ std::string WSNXbee::receive(int numberOfXbee){
 
 		struct xbee_pkt *pkt;
 
-		xbee_conTx(con, NULL, "HelloTest");
+		//xbee_conTx(con, NULL, "HelloTest");
 
 		usleep(100000);
 
