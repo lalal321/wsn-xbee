@@ -1,0 +1,16 @@
+# depslib dependency file v1.0
+1510071915 source:/home/pi/wsn-xbee/main.cpp
+	<iostream>
+	<unistd.h>
+	"wsn-xbee.h"
+
+1510076620 /home/pi/wsn-xbee/wsn-xbee.h
+	<iostream>
+	<unistd.h>
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<xbee.h>
+	<string>
+	<sstream>
+

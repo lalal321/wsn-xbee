@@ -5,7 +5,7 @@
 #include <string.h>
 #include <xbee.h>
 #include <string>
-#include <sstream> 
+#include <sstream>
 
 std::string data;
 
@@ -15,7 +15,7 @@ class WSNXbee{
     ~WSNXbee();
     void send(int numberOfXbee, std::string data);
     std::string receive(int numberOfXbee);
-    
+
  private:
 	struct xbee_conAddress address;
     struct xbee *xbee;
@@ -24,8 +24,8 @@ class WSNXbee{
 };
 
 // constructor
-WSNXbee::WSNXbee(std::string port, int baudrate){
-	xbee_setup(&this->xbee, "xbeeZB", port, baudrate);
+WSNXbee::WSNXbee(std::string port_, int baudrate){
+	xbee_setup(&this->xbee, "xbeeZB", port_.c_str(), baudrate);
 }
 
 // destructor
@@ -38,12 +38,12 @@ WSNXbee::~WSNXbee(){
 }
 
 void WSNXbee::selectRadio(int n){
-	
+
 	/* close the connection */
 	xbee_conEnd(this->con);
-	
+
 	int status = 0;
-	
+
 	if(n == 1){
 		memset(&this->address, 0, sizeof(this->address));
 		this->address.addr64_enabled = 1;
@@ -87,23 +87,23 @@ void WSNXbee::selectRadio(int n){
 		std::cout << "Xbee not found!\n";
 		return;
 	}
-	
+
 	if(status == 1){
-	
+
 		/* create a 64-bit data connection with the address */
 		xbee_conNew(xbee, &this->con, "Data", &this->address);
-		
+
 	}
 	else{
 		this->selectRadio(1);
 	}
-	
+
 }
 
 void WSNXbee::send(int numberOfXbee, std::string message){
-	
+
 	this->selectRadio(numberOfXbee);
-	
+
 	//convert string to char
 	char * writable = new char[message.size() + 1];
 	copy(message.begin(), message.end(), writable);
@@ -113,7 +113,7 @@ void WSNXbee::send(int numberOfXbee, std::string message){
 }
 
 std::string WSNXbee::receive(int numberOfXbee){
-	
+
 		this->selectRadio(numberOfXbee);
 
 		struct xbee_pkt *pkt;
@@ -127,10 +127,10 @@ std::string WSNXbee::receive(int numberOfXbee){
             return NULL;
 
         }
-        
+
         //convert char array to string
         std::stringstream ss;
         ss << pkt->data;
-        
+
         return ss.str();
 }
