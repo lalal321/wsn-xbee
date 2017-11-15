@@ -21,6 +21,7 @@ OBJS_NS_CPP = $(SRC_NS_CPP:%.cc=%-ns.o)
 KERNEL=$(shell uname -r)
 # Change to compile against different kernel (can be overridden):
 KERNEL_DIR=/lib/modules/$(KERNEL)/build
+#KERNEL_DIR=/usr/src/linux-headers-4.9.0-4-rpi
 KERNEL_INC=$(KERNEL_DIR)/include
 
 # Compiler and options:
