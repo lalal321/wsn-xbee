@@ -1,0 +1,1 @@
+/usr/bin/c++      CMakeFiles/aruco_print_dictionary.dir/aruco_print_dictionary.o  -o aruco_print_dictionary -rdynamic -laruco -lopencv_calib3d 

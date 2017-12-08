@@ -1,0 +1,1 @@
+/usr/bin/c++      CMakeFiles/aruco_batch_processing.dir/aruco_batch_processing.o  -o aruco_batch_processing -rdynamic -laruco -lopencv_calib3d 

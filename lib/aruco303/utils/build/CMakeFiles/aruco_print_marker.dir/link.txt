@@ -1,0 +1,1 @@
+/usr/bin/c++      CMakeFiles/aruco_print_marker.dir/aruco_print_marker.o  -o aruco_print_marker -rdynamic -laruco -lopencv_calib3d 

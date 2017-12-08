@@ -1,0 +1,12 @@
+/home/pi/wsn-xbee/lib/aruco303/utils/build/CMakeFiles/install/local.dir
+/home/pi/wsn-xbee/lib/aruco303/utils/build/CMakeFiles/aruco_test.dir
+/home/pi/wsn-xbee/lib/aruco303/utils/build/CMakeFiles/aruco_simple.dir
+/home/pi/wsn-xbee/lib/aruco303/utils/build/CMakeFiles/aruco_print_marker.dir
+/home/pi/wsn-xbee/lib/aruco303/utils/build/CMakeFiles/list_install_components.dir
+/home/pi/wsn-xbee/lib/aruco303/utils/build/CMakeFiles/aruco_print_dictionary.dir
+/home/pi/wsn-xbee/lib/aruco303/utils/build/CMakeFiles/aruco_tracker.dir
+/home/pi/wsn-xbee/lib/aruco303/utils/build/CMakeFiles/edit_cache.dir
+/home/pi/wsn-xbee/lib/aruco303/utils/build/CMakeFiles/aruco_batch_processing.dir
+/home/pi/wsn-xbee/lib/aruco303/utils/build/CMakeFiles/rebuild_cache.dir
+/home/pi/wsn-xbee/lib/aruco303/utils/build/CMakeFiles/install/strip.dir
+/home/pi/wsn-xbee/lib/aruco303/utils/build/CMakeFiles/install.dir

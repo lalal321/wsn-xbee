@@ -1,0 +1,1 @@
+/usr/bin/c++      CMakeFiles/aruco_test.dir/aruco_test.o  -o aruco_test -rdynamic -laruco -lopencv_calib3d 

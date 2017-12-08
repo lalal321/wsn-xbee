@@ -1,0 +1,1 @@
+/usr/bin/c++      CMakeFiles/aruco_tracker.dir/aruco_tracker.o  -o aruco_tracker -rdynamic -laruco -lopencv_calib3d 
